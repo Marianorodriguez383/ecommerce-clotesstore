@@ -1,0 +1,5 @@
+.cart {
+  height: 3em;
+  width: 2em;
+  display: flex;
+}
