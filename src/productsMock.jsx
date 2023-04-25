@@ -5,7 +5,7 @@ export const productos = [
     price: 15000,
     stock: 2,
     description: "Modelo 2022",
-    category: "Remeras",
+    category: "Short",
     img: "https://res.cloudinary.com/da2zg5p95/image/upload/v1667347615/5dc42cfb-7062-49a0-b73f-72707372af19_k7rgcy.jpg",
   },
   {
@@ -19,21 +19,21 @@ export const productos = [
   },
   {
     id: 3,
-    title: "Camiseta Boca",
+    title: "Buzo Boca",
     price: 17000,
     stock: 5,
     description: "Camiseta Boca jr Retro",
     category: "Buzos",
-    img: "https://res.cloudinary.com/da2zg5p95/image/upload/v1667347616/4b7b968b-0382-47ae-8bf9-d31e92fc0d27_ljtzkv.jpg",
+    img: "https://res.cloudinary.com/da2zg5p95/image/upload/v1682383185/13e955f1-611f-4033-931b-4dc2584cb512_i0fzgk.jpg",
   },
   {
     id: 4,
-    title: "Camiseta Argentina 1994",
-    price: 15000,
+    title: "Short Puma",
+    price: 6000,
     stock: 5,
-    description: " mejores zapatillas",
+    description: "Short Puma",
     category: "Short",
-    img: "https://res.cloudinary.com/da2zg5p95/image/upload/v1667347615/1c892a50-4f91-4cad-99e5-bc59acd536ab_t4hvhp.jpg",
+    img: "https://res.cloudinary.com/da2zg5p95/image/upload/v1682383053/4ff90aa7-a75b-4a07-bdaf-f18e921ad855_vslexq.jpg",
   },
 ];
 

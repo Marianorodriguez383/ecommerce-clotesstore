@@ -8,11 +8,11 @@ const ItemList = ({ items }) => {
     <div className={styles.divItem}>
       {items.map((elemento) => {
         return (
-          <div key={elemento.id} className={styles.item}>
+          <div key={elemento.id} className={`${styles.item} item`}>
             <Box>
               <Grid container>
                 <Grid item xs={4}>
-                  <img src={elemento.img} alt="" style={{ width: "200px" }} />
+                  <img src={elemento.img} alt="" />
                   <h3>{elemento.title}</h3>
                   <h4>{elemento.price}</h4>
                   <Link to={`/ItemDetail/${elemento.id}`}>
