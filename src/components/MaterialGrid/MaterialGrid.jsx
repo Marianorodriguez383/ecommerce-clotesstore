@@ -12,7 +12,7 @@ const MaterialGrid = () => {
           <h5 style={{ border: "2px solid black" }}>Item 2</h5>
         </Grid>
         <Grid item xs={4}>
-          <h5 style={{ border: "2px solid black" }}>Item 1</h5>
+          <h5 style={{ border: "2px solid black" }}>Item 3</h5>
         </Grid>
       </Grid>
     </Box>

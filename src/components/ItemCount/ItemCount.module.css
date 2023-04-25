@@ -1,0 +1,50 @@
+.counter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+button {
+  font-size: 1em;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #6465ac;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #291ba3;
+}
+
+.agregarAlCarritoContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.agregarAlCarrito {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #337ab7;
+  color: white;
+  cursor: pointer;
+}
+
+.addToCart:hover {
+  background-color: #286090;
+}
