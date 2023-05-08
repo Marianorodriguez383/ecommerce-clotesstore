@@ -8,7 +8,6 @@ export const ItemListContainer = ({ greeting }) => {
   const [items, setItems] = useState([]);
 
   const { categoryName } = useParams();
-  console.log(categoryName);
 
   useEffect(() => {
     const itemsFiltrados = productos.filter(
@@ -18,7 +17,7 @@ export const ItemListContainer = ({ greeting }) => {
     const tarea = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(categoryName ? itemsFiltrados : productos);
-      }, 2000);
+      });
     });
 
     tarea.then((res) => setItems(res));

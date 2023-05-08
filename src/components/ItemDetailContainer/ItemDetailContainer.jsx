@@ -9,13 +9,13 @@ const ItemDetailContainer = () => {
   // let id = 1;
 
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     let encontrado = productos.find((prod) => prod.id === +id);
     setTimeout(() => {
       setItem(encontrado);
-    }, 2000);
+    });
   }, [id]);
 
   return (
