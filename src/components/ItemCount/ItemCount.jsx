@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import styles from "./ItemCount.module.css";
 import { Button } from "@mui/material";
 
-const ItemCount = ({ initial, stock, agregar }) => {
-  console.log(agregar);
-
+const ItemCount = ({ initial, stock, onAdd }) => {
   const [cantidad, setCantidad] = useState(initial);
 
   const incrementar = () => {
@@ -32,7 +30,7 @@ const ItemCount = ({ initial, stock, agregar }) => {
 
         <div className={styles.agregarAlCarritoConteiner}>
           <Button
-            onClick={() => agregar(cantidad)}
+            onClick={() => onAdd(cantidad)}
             disabled={!stock}
             className={styles.agregarAlCarrito}
           >

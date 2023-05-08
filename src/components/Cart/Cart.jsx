@@ -5,7 +5,7 @@ const Cart = ({ cart }) => {
     <div>
       <h1>Aca el carrito </h1>
       {cart.map((e) => (
-        <h2>{e?.title}</h2>
+        <h2 key={e.id}>{e?.title}</h2>
       ))}
     </div>
   );
