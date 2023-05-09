@@ -5,13 +5,15 @@ import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const Cartwitget = () => {
-  const { cart } = useContext(CartContext);
+  const { getTotalQuantity } = useContext(CartContext);
+
+  let total = getTotalQuantity();
 
   return (
     <Link to="/Cart">
       <div>
         <ShoppingCartIcon className={styles.cart} />
-        <span>{cart.length}</span>
+        <span>{total}</span>
       </div>
     </Link>
   );

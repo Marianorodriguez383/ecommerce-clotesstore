@@ -5,11 +5,62 @@ export const CartContext = createContext();
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
+  const estaEnElCarrito = (id) => {
+    let existe = cart.some((elemento) => elemento.id === id);
+    return existe;
+  };
   const agregarAlCarrito = (producto) => {
-    setCart([...cart, producto]);
+    let existe = estaEnElCarrito(producto.id);
+    if (existe) {
+      let newCart = cart.map((elemento) => {
+        if (elemento.id === producto.id) {
+          return {
+            ...elemento,
+            quantity: elemento.quantity + producto.quantity,
+          };
+        } else {
+          return elemento;
+        }
+      });
+
+      setCart(newCart);
+    } else {
+      setCart([...cart, producto]);
+    }
   };
 
-  let data = { cart, agregarAlCarrito };
+  const clearCart = () => {
+    setCart([]);
+  };
+
+  const deleteProductById = (id) => {
+    const productosFiltrados = cart.filter((elemento) => elemento.id !== id);
+    setCart(productosFiltrados);
+  };
+
+  const getTotalPrice = () => {
+    let total = cart.reduce((acc, elemento) => {
+      return acc + elemento.price * elemento.quantity;
+    }, 0);
+    return total;
+  };
+
+  const getTotalQuantity = () => {
+    let total = cart.reduce((acc, elemento) => {
+      return acc + elemento.quantity;
+    }, 0);
+
+    return total;
+  };
+
+  let data = {
+    cart,
+    agregarAlCarrito,
+    clearCart,
+    deleteProductById,
+    getTotalPrice,
+    getTotalQuantity,
+  };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
