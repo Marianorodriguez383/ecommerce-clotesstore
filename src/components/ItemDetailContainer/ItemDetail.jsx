@@ -8,6 +8,7 @@ export const ItemDetail = ({ product, onAdd, cantidadEnTotalidad }) => {
       <img src={product.img} alt="" />
       <h2>{product.title}</h2>
       <h2>{product.description}</h2>
+      <h2>${product.price}</h2>
       <ItemCountContainer
         stock={product.stock}
         onAdd={onAdd}
