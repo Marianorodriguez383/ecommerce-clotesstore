@@ -3,6 +3,7 @@ import styles from "./ItemListContainer.module.css";
 import ItemList from "./ItemList";
 import { productos } from "../../productsMock";
 import { useParams } from "react-router-dom";
+import { BeatLoader } from "react-spinners";
 
 export const ItemListContainer = ({ greeting }) => {
   const [items, setItems] = useState([]);
@@ -17,11 +18,19 @@ export const ItemListContainer = ({ greeting }) => {
     const tarea = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(categoryName ? itemsFiltrados : productos);
-      });
+      }, 1000);
     });
 
     tarea.then((res) => setItems(res));
   }, [categoryName]);
+
+  if (items.length === 0) {
+    return (
+      <div className={styles.loader}>
+        <BeatLoader color="#36d7b7" size={40} />
+      </div>
+    );
+  }
 
   return (
     <div>

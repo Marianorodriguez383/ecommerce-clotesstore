@@ -3,14 +3,13 @@ import { ItemDetail } from "./ItemDetail";
 import { productos } from "../../productsMock";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import Swal from "sweetalert2";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
-  const { agregarAlCarrito } = useContext(CartContext);
-  // let id = 1;
+  const { agregarAlCarrito, getQuantityById } = useContext(CartContext);
 
   const { id } = useParams();
-  // console.log(id);
 
   useEffect(() => {
     let encontrado = productos.find((prod) => prod.id === +id);
@@ -26,13 +25,25 @@ const ItemDetailContainer = () => {
     };
 
     agregarAlCarrito(data);
-
-    // console.log(`se agregaron ${cantidad} del producto ${item.title}`);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: `Se agrego ${item.title} correctamente`,
+      showConfirmButton: true,
+      timer: 1500,
+    });
   };
+
+  let cantidadEnTotalidad = getQuantityById(item.id);
+  console.log(cantidadEnTotalidad);
 
   return (
     <div>
-      <ItemDetail product={item} onAdd={onAdd} />
+      <ItemDetail
+        product={item}
+        onAdd={onAdd}
+        cantidadEnTotalidad={cantidadEnTotalidad}
+      />
     </div>
   );
 };

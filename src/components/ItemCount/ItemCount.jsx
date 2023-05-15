@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ItemCount.module.css";
 import { Button } from "@mui/material";
 
-const ItemCount = ({ initial, stock, onAdd }) => {
-  const [cantidad, setCantidad] = useState(initial);
+const ItemCount = ({ inicial, stock, onAdd }) => {
+  const [cantidad, setCantidad] = useState(inicial);
+
+  useEffect(() => {
+    setCantidad(inicial);
+  }, [inicial]);
 
   const incrementar = () => {
     if (cantidad < stock) {

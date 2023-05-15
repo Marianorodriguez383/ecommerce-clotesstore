@@ -1,11 +1,11 @@
 import React from "react";
 import ItemCount from "./ItemCount";
 
-const ItemCountContainer = ({ stock, onAdd }) => {
+const ItemCountContainer = ({ stock, onAdd, inicial = 1 }) => {
   return (
     <div>
       <ItemCount
-        initial={1}
+        inicial={inicial}
         stock={stock}
         // agregar={(cantidad) =>
         //   console.log("cantidad agregada al carrito", cantidad)
