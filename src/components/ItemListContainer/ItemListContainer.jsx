@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ItemListContainer.module.css";
 import ItemList from "./ItemList";
-import { productos } from "../../productsMock";
+
 import { useParams } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
+import { database } from "../../firebaseConfig";
+import { getDocs, collection, query, where } from "firebase/firestore";
 
 export const ItemListContainer = ({ greeting }) => {
   const [items, setItems] = useState([]);
@@ -11,17 +13,30 @@ export const ItemListContainer = ({ greeting }) => {
   const { categoryName } = useParams();
 
   useEffect(() => {
-    const itemsFiltrados = productos.filter(
-      (prod) => prod.category === categoryName
-    );
+    let consulta;
+    const itemCollection = collection(database, "productos");
 
-    const tarea = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(categoryName ? itemsFiltrados : productos);
-      }, 1000);
-    });
+    if (categoryName) {
+      const itemsCollectionFiltered = query(
+        itemCollection,
+        where("category", "==", categoryName)
+      );
+      consulta = itemsCollectionFiltered;
+    } else {
+      consulta = itemCollection;
+    }
 
-    tarea.then((res) => setItems(res));
+    getDocs(consulta)
+      .then((res) => {
+        const products = res.docs.map((productos) => {
+          return {
+            ...productos.data(),
+            id: productos.id,
+          };
+        });
+        setItems(products);
+      })
+      .catch((err) => console.log(err));
   }, [categoryName]);
 
   if (items.length === 0) {

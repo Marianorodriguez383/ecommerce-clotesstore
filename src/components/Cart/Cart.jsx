@@ -8,7 +8,7 @@ import {
 import styles from "./Cart.module.css";
 import { Link } from "react-router-dom";
 
-const Cart = ({ cart, clearCart, deleteProductById, total }) => {
+const Cart = ({ cart, clearCart, deleteProductById, total, navigate }) => {
   return (
     <div className={styles.container}>
       {cart.map((product) => {
@@ -69,7 +69,13 @@ const Cart = ({ cart, clearCart, deleteProductById, total }) => {
           >
             Limpiar Carrito
           </Button>
-          <Button variant="contained" className={styles.cartClearButton}>
+          <Button
+            variant="contained"
+            onClick={() => {
+              navigate("/checkout");
+            }}
+            className={styles.cartClearButton}
+          >
             Terminar Compra
           </Button>
         </div>
