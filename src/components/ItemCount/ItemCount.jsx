@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ItemCount.module.css";
 import { Button } from "@mui/material";
+import Swal from "sweetalert2";
 
 const ItemCount = ({ inicial, stock, onAdd }) => {
   const [cantidad, setCantidad] = useState(inicial);
@@ -12,6 +13,8 @@ const ItemCount = ({ inicial, stock, onAdd }) => {
   const incrementar = () => {
     if (cantidad < stock) {
       setCantidad(cantidad + 1);
+    } else {
+      Swal.fire("Has alcanzado la cantidad máxima de items en stock");
     }
   };
 

@@ -9,11 +9,13 @@ export const ItemDetail = ({ product, onAdd, cantidadEnTotalidad }) => {
       <h2>{product.title}</h2>
       <h2>{product.description}</h2>
       <h2>${product.price}</h2>
-      <ItemCountContainer
-        stock={product.stock}
-        onAdd={onAdd}
-        inicial={cantidadEnTotalidad}
-      />
+      {product.stock > 0 && (
+        <ItemCountContainer
+          stock={product.stock}
+          onAdd={onAdd}
+          inicial={cantidadEnTotalidad}
+        />
+      )}
     </div>
   );
 };
