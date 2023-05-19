@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormCheckout from "./FormCheckout";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -11,9 +12,12 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
+import Swal from "sweetalert2";
+import { Button } from "@mui/material";
 
 const FormCheckoutContainer = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const [orderId, setOrderId] = useState(null);
 
@@ -28,7 +32,14 @@ const FormCheckoutContainer = () => {
     };
 
     const ordersCollection = collection(database, "orders");
-    addDoc(ordersCollection, infoOrder).then((res) => setOrderId(res.id));
+    addDoc(ordersCollection, infoOrder)
+      .then((res) => {
+        setOrderId(res.id);
+        showSuccessAlert(res.id);
+      })
+      .catch((error) => {
+        showErrorAlert(error.message);
+      });
 
     cart.map((productos) =>
       updateDoc(doc(database, "productos", productos.id), {
@@ -37,6 +48,22 @@ const FormCheckoutContainer = () => {
     );
 
     clearCart();
+  };
+
+  const showSuccessAlert = (orderId) => {
+    Swal.fire({
+      icon: "success",
+      title: "¡Gracias por su compra!",
+      text: `El número de orden de compra es: ${orderId}`,
+    });
+  };
+
+  const showErrorAlert = (errorMessage) => {
+    Swal.fire({
+      icon: "error",
+      title: "Error al realizar la compra",
+      text: errorMessage,
+    });
   };
 
   const { handleSubmit, handleChange, errors } = useFormik({
@@ -61,9 +88,7 @@ const FormCheckoutContainer = () => {
   return (
     <div>
       {orderId ? (
-        <h1>
-          Gracias por su compra ! El número de orden de compra es: {orderId}
-        </h1>
+        <Button onClick={() => navigate("/")}>Volver al Inicio</Button>
       ) : (
         <FormCheckout
           handleChange={handleChange}

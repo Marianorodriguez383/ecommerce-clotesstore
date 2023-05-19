@@ -1,7 +1,3 @@
-/* .titulo {
-  display: flex;
-  justify-content: center;
-} */
 .titulo {
   background-image: url("https://res.cloudinary.com/da2zg5p95/image/upload/v1682893954/FuACKXyWYAA37Jq_tbalvs.jpg");
   background-repeat: no-repeat;
@@ -19,6 +15,7 @@
   background-image: url("https://res.cloudinary.com/da2zg5p95/image/upload/v1682893826/FlWj0IrWQAEdCR5_xilvbr.jpg");
   background-repeat: repeat;
   background-size: contain;
+  min-height: 80vh;
 }
 
 @media (max-width: 768px) {

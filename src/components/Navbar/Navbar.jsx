@@ -24,25 +24,27 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={styles.navbar}>
-      <div className={styles.containerNavbar}>
-        <Link to="/">
-          <img
-            src="https://img.freepik.com/vector-premium/tienda-ropa-logo-icono-ilustracion_561505-44.jpg?"
-            alt="Logo Empresa"
-            className={styles.logo}
-          />
-        </Link>
-        <ul className={styles.navigation}>
-          {categories.map((category) => {
-            return (
-              <Link key={category.id} to={category.path}>
-                {category.title}
-              </Link>
-            );
-          })}
-        </ul>
-        <Cartwitget />
+    <div className={styles.navbarWrapper}>
+      <div className={styles.navbar}>
+        <div className={styles.containerNavbar}>
+          <Link to="/">
+            <img
+              src="https://img.freepik.com/vector-premium/tienda-ropa-logo-icono-ilustracion_561505-44.jpg?"
+              alt="Logo Empresa"
+              className={styles.logo}
+            />
+          </Link>
+          <ul className={styles.navigation}>
+            {categories.map((category) => {
+              return (
+                <Link key={category.id} to={category.path}>
+                  {category.title}
+                </Link>
+              );
+            })}
+          </ul>
+          <Cartwitget />
+        </div>
       </div>
 
       <Outlet />
