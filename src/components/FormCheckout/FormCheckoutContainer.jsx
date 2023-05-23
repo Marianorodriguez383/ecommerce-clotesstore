@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import Swal from "sweetalert2";
 import { Button } from "@mui/material";
+import styles from "./FormCheckout.module.css";
 
 const FormCheckoutContainer = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
@@ -88,7 +89,16 @@ const FormCheckoutContainer = () => {
   return (
     <div>
       {orderId ? (
-        <Button onClick={() => navigate("/")}>Volver al Inicio</Button>
+        <div className={styles.backgroundImageContainer}>
+          <div className={styles.returnButtonContainer}>
+            <Button
+              className={styles.returnButton}
+              onClick={() => navigate("/")}
+            >
+              Volver al Inicio
+            </Button>
+          </div>
+        </div>
       ) : (
         <FormCheckout
           handleChange={handleChange}

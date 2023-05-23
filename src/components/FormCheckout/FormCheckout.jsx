@@ -5,6 +5,7 @@ import styles from "./FormCheckout.module.css";
 const FormCheckout = ({ handleChange, handleSubmit, errors }) => {
   return (
     <div className={styles.formContainer}>
+      <h2>Datos del comprador</h2>
       <form action="" onSubmit={handleSubmit}>
         <div>
           <TextField

@@ -13,6 +13,7 @@
 
 .buttonContainer {
   margin-top: 16px;
+  margin-bottom: 15%;
 }
 
 @media (max-width: 767px) {
@@ -23,4 +24,31 @@
   .textInput {
     width: 100%;
   }
+}
+
+.returnButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.returnButton {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #36d7b7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.backgroundImageContainer {
+  background-image: url("https://res.cloudinary.com/da2zg5p95/image/upload/v1682893826/FlWj0IrWQAEdCR5_xilvbr.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
